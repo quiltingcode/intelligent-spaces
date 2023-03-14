@@ -25,7 +25,6 @@ spliced_date = []
 for row in issue_date_col:
     spliced_date.append(row[0:11])
 
-# print(spliced_date)
 
 """ Format issue time column """
 
