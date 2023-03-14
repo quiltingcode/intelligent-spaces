@@ -18,12 +18,12 @@ sheet = GSPREAD_CLIENT.open('intelligent-spaces-test').sheet1
 citations = sheet.get_all_records()
 
 
-def update_worksheet(data):
-    """
-    Upload the cleaned data back into the citations worksheet
-    """
-    cleaned_data_ws = GSPREAD_CLIENT.open('intelligent-spaces-test').sheet2
-    cleaned_data_ws.append_col(data)
+# def update_worksheet(data):
+#     """
+#     Upload the cleaned data back into the citations worksheet
+#     """
+#     cleaned_data_ws = GSPREAD_CLIENT.open('intelligent-spaces-test').sheet1
+#     cleaned_data_ws.append_col(data)
 
 
 """ Challenge 1 - Combine the Issue Date and Issue time into a single Issue Date Time value """
@@ -115,13 +115,26 @@ for row in latitude_col:
 for row in longitude_col:
     clean_longitude(row)
 
-print(cleaned_latitude)
-print(cleaned_longitude)
 
-update_worksheet(cleaned_latitude)
+# update_worksheet(cleaned_latitude)
 
 """
 Challenge 4 - An additional crib sheet provides the agency names that match the Agency ID in 
 the data. Extend the data set to hold both the ID and the name of the agency.
 """
 
+
+fine_amount_col = list(sheet.col_records(17))
+sum_fines = 0
+
+
+# def sum_fines(data):
+#     fine_int = data
+#     print(fine_int)
+#     total = sum_fines + fine_int
+
+
+for fine in len(fine_amount_col):
+    sum_fines += fine
+
+print(sum_fines)
