@@ -5,7 +5,7 @@
 
 * I referred back to the Cave of Query portfolio project that I created, when joining two columns of data together; the issue date and issue time columns
 
-* [Inserting Characters](https://stackoverflow.com/questions/71701814/how-to-insert-a-character-into-a-string-at-a-certain-index)
+* I found this [Stack Overflow](https://stackoverflow.com/questions/21620602/add-leading-zero-python) article to help format the time data, to add missing zeros to make all the times 4 digits and then I added a ':' between each time, before concatenating it with the date
 
 
 
