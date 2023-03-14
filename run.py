@@ -12,8 +12,16 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('intelligent-spaces-test')
 
-citations = SHEET.worksheet('citations')
 
-data = citations.get_all_values()
+""" Check the data can be read through the API """
+sheet = GSPREAD_CLIENT.open('intelligent-spaces-test').sheet1
+data = sheet.get_all_records()
 
-print(data)
+""" Single out the data from the Issue Date column """
+issue_date_col = list(sheet.col_values(2))
+issue_time_col = list(sheet.col_values(3))
+
+combined_columns = {issue_date_col[i] + issue_time_col[i] for i in range(len(issue_date_col))}
+print(combined_columns)
+
+
