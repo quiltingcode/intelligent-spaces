@@ -243,9 +243,10 @@ def remove_empty_str(data):
 for row in fine_without_header:
     remove_empty_str(row)
 
+# print(formatted_nums)
 sum_fines = sum(map(int, formatted_nums))
 
-print(f"The total of fines issued per year is {sum_fines}")
+# print(f"The total of fines issued per year is {sum_fines}")
 
 
 veh_make_col = sheet.col_values(9)
@@ -268,21 +269,89 @@ def clean_makes(data):
 for row in makes_without_header:
     clean_makes(row)
 
+# print(cleaned_makes)
 
+d = sheet.get_all_records()
+df = pd.DataFrame(d)
 
-""" make a dictionary of makes with fine amount """
+# acur_total = df.loc[df['Make'] == 'ACUR', 'Fine amount'].sum()
+# print("Total ACUR fines:", acur_total)
 
-make_fines_dict = {cleaned_makes[i]: formatted_nums[i] for i in range(len(cleaned_makes))}
+gmc_total = df.loc[df['Make'] == 'GMC', 'Fine amount'].sum()
+print("Total GMC fines:", gmc_total)
 
-print(make_fines_dict)
+bmw_total = df.loc[df['Make'] == 'BMW', 'Fine amount'].sum()
+print("Total BMW fines:", bmw_total)
 
+cadi_total = df.loc[df['Make'] == 'CADI', 'Fine amount'].sum()
+print("Total CADI fines:", cadi_total)
 
+# chev_total = df.loc[df['Make'] == 'CHEV', 'Fine amount'].sum()
+# print("Total CHEV fines:", chev_total)
+
+chry_total = df.loc[df['Make'] == 'CHRY', 'Fine amount'].sum()
+print("Total CHRY fines:", chry_total)
+
+dodg_total = df.loc[df['Make'] == 'DODG', 'Fine amount'].sum()
+print("Total DODG fines:", dodg_total)
+
+# ford_total = df.loc[df['Make'] == 'FORD', 'Fine amount'].sum()
+# print("Total FORD fines:", ford_total)
+
+frei_total = df.loc[df['Make'] == 'FREI', 'Fine amount'].sum()
+print("Total FREI fines:", frei_total)
+
+hino_total = df.loc[df['Make'] == 'HINO', 'Fine amount'].sum()
+print("Total HINO fines:", hino_total)
+
+hond_total = df.loc[df['Make'] == 'HOND', 'Fine amount'].sum()
+print("Total HOND fines:", hond_total)
+
+hyun_total = df.loc[df['Make'] == 'HYUN', 'Fine amount'].sum()
+print("Total HYUN fines:", hyun_total)
+
+infi_total = df.loc[df['Make'] == 'INFI', 'Fine amount'].sum()
+print("Total INFI fines:", infi_total)
+
+jeep_total = df.loc[df['Make'] == 'JEEP', 'Fine amount'].sum()
+print("Total JEEP fines:", jeep_total)
+
+kia_total = df.loc[df['Make'] == 'KIA', 'Fine amount'].sum()
+print("Total KIA fines:", kia_total)
+
+kw_total = df.loc[df['Make'] == 'KW', 'Fine amount'].sum()
+print("Total KW fines:", kw_total)
+
+linc_total = df.loc[df['Make'] == 'LINC', 'Fine amount'].sum()
+print("Total LINC fines:", linc_total)
+
+lind_total = df.loc[df['Make'] == 'LIND', 'Fine amount'].sum()
+print("Total LIND fines:", lind_total)
+
+lrov_total = df.loc[df['Make'] == 'LROV', 'Fine amount'].sum()
+print("Total LROV fines:", lrov_total)
 
 # Update Google sheet with cleaned data
 
 cleaned_data_ws = SHEET.worksheet('cleaned_data')
 
-
+test_array = []
 for row in cleaned_latitude:
-    cleaned_data_ws.update('R2:R200', [[row]])
+    test_array.append(row)
+    # cleaned_data_ws.update('R2:R60', [[row]])
+cleaned_data_ws.update('R', list(test_array))
 
+# cleaned_data_ws.update_cells(crange='R2',values = cleaned_latitude)
+
+# print(cleaned_latitude)
+
+# s_range = SHEET.worksheet("citations").get("A1:W200")
+# new_worksheet = SHEET.add_worksheet(title="COPY of citations", 
+#     rows=len(s_range), cols=len(s_range[0]))
+
+# cleaned_data_ws.update("A1:A200", [cleaned_latitude])
+
+"""
+Part 2
+Challenge 2 - Average and Standard Deviation of the fine amount per year per agency
+"""
