@@ -95,11 +95,50 @@ def clean_expiry_dates(data):
 for plate in plate_expiry_date_col:
     clean_expiry_dates(plate)
 
-print(cleaned_expiry_dates)
 
-# cleaned_expiry_dates = [f"{el[:4]}-{el[2:]}-{el[2:]}" for el in cleaned_expiry_dates]
+"""
+Add a '-' divider symbol between the year and the month
+"""
+cleaned_expiry_dates = [f"{el[:4]}-{el[4:]}" for el in cleaned_expiry_dates]
 
-# print(cleaned_expiry_dates)
+
+"""
+Add a '-' divider symbol and then the last day of the month, 30, 31 or 28
+depending on the month of expiry
+"""
+
+completed_plates = []
+
+# 30 day months
+april = '-04'
+june = '-06'
+sept = '-09'
+nov = '-11'
+
+#31 day months
+jan = '-01'
+mar = '-03'
+may = '-05'
+july = '-07'
+aug = '-08'
+oct = '-10'
+dec = '-12'
+
+for plate in cleaned_expiry_dates:
+    if april in plate:
+        new_april_plate = f"{plate}-30"
+        completed_plates.append(new_april_plate)
+    elif june in plate:
+        new_june_plate = f"{plate}-30"
+        completed_plates.append(new_june_plate)
+    elif sept in plate:
+        new_sept_plate = f"{plate}-30"
+        completed_plates.append(new_sept_plate)
+    elif nov in plate:
+        new_nov_plate = f"{plate}-30"
+        completed_plates.append(new_nov_plate)
+
+print(completed_plates)
 
 
 """ Challenge 3 - Convert invalid latitude and longitude values into none values (rather than the current magic 
