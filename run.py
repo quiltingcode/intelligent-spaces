@@ -108,6 +108,8 @@ depending on the month of expiry
 """
 
 completed_plates = []
+length_plates = len(completed_plates)
+
 
 # 30 day months
 april = '-04'
@@ -125,20 +127,31 @@ oct = '-10'
 dec = '-12'
 
 for plate in cleaned_expiry_dates:
-    if april in plate:
-        new_april_plate = f"{plate}-30"
-        completed_plates.append(new_april_plate)
-    elif june in plate:
-        new_june_plate = f"{plate}-30"
-        completed_plates.append(new_june_plate)
-    elif sept in plate:
-        new_sept_plate = f"{plate}-30"
-        completed_plates.append(new_sept_plate)
-    elif nov in plate:
-        new_nov_plate = f"{plate}-30"
-        completed_plates.append(new_nov_plate)
+    if april or june or sept or nov in plate:
+        new_30_plate = f"{plate}-30"
+        completed_plates.append(new_30_plate)
+    # elif june in plate:
+    #     new_june_plate = f"{plate}-30"
+    #     completed_plates.append(new_june_plate)
+    # elif sept in plate:
+    #     new_sept_plate = f"{plate}-30"
+    #     completed_plates.append(new_sept_plate)
+    # elif nov in plate:
+    #     new_nov_plate = f"{plate}-30"
+    #     completed_plates.append(new_nov_plate)
+    elif jan in plate:
+        new_jan_plate = f"{plate}-31"
+        completed_plates.append(new_jan_plate)
+    elif mar in plate:
+        new_mar_plate = f"{plate}-31"
+        completed_plates.append(new_mar_plate)
+    elif may or july in plate:
+        new_31_plate = f"{plate}-31"
+        completed_plates.append(new_31_plate)
+
 
 print(completed_plates)
+print(length_plates)
 
 
 """ Challenge 3 - Convert invalid latitude and longitude values into none values (rather than the current magic 
