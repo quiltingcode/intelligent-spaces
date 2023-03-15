@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from datetime import date
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -74,8 +75,31 @@ combined_columns = {spliced_date[i] + formatted_times[i] for i in range(len(spli
 
 plate_expiry_date_col = list(sheet.col_values(7))
 
+cleaned_expiry_dates = []
 
-plus_day = []
+today = date.today()
+set_date_format = today.strftime("%Y-%m-%d")
+
+
+def clean_expiry_dates(data):
+    """
+    If no date exists, set expiry as today's date
+    """
+    if data == "":
+        data = set_date_format
+        cleaned_expiry_dates.append(data)
+    else:
+        cleaned_expiry_dates.append(data)
+
+
+for plate in plate_expiry_date_col:
+    clean_expiry_dates(plate)
+
+print(cleaned_expiry_dates)
+
+# cleaned_expiry_dates = [f"{el[:4]}-{el[2:]}-{el[2:]}" for el in cleaned_expiry_dates]
+
+# print(cleaned_expiry_dates)
 
 
 """ Challenge 3 - Convert invalid latitude and longitude values into none values (rather than the current magic 
@@ -136,6 +160,7 @@ fine_without_header = fine_amount_col[1:]
 
 formatted_nums = []
 
+
 def remove_empty_str(data):
     """
     If the fine field is an empty string, zeros are inserted to make
@@ -157,8 +182,33 @@ sum_fines = sum(map(int, formatted_nums))
 print(f"The total of fines issued per year is {sum_fines}")
 
 
+veh_make_col = sheet.col_values(9)
+makes_without_header = veh_make_col[1:]
+
+cleaned_makes = []
 
 
+def clean_makes(data):
+    """ 
+    Convert makes of '' to 'none'
+    """
+    if data == '':
+        data = 'none'
+        cleaned_makes.append(data)
+    else:
+        cleaned_makes.append(data)
+
+
+for row in makes_without_header:
+    clean_makes(row)
+
+
+
+""" make a dictionary of makes with fine amount """
+
+make_fines_dict = {cleaned_makes[i]: formatted_nums[i] for i in range(len(cleaned_makes))}
+
+# print(make_fines_dict)
 
 
 
