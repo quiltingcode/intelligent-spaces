@@ -124,17 +124,41 @@ the data. Extend the data set to hold both the ID and the name of the agency.
 """
 
 
-fine_amount_col = list(sheet.col_records(17))
-sum_fines = 0
+
+"""
+Part 2
+Challenge 1 - Total of fines issues per year per make of vehicle
+"""
 
 
-# def sum_fines(data):
-#     fine_int = data
-#     print(fine_int)
-#     total = sum_fines + fine_int
+fine_amount_col = sheet.col_values(17)
+fine_without_header = fine_amount_col[1:]
+
+formatted_nums = []
+
+def remove_empty_str(data):
+    """
+    If the fine field is an empty string, zeros are inserted to make
+    it a one digit character, ready for summing
+    """
+
+    if len(data) < 1:
+        new_num = str(data.zfill(1))
+        formatted_nums.append(new_num)
+    else:
+        formatted_nums.append(data)
 
 
-for fine in len(fine_amount_col):
-    sum_fines += fine
+for row in fine_without_header:
+    remove_empty_str(row)
 
-print(sum_fines)
+sum_fines = sum(map(int, formatted_nums))
+
+print(f"The total of fines issued per year is {sum_fines}")
+
+
+
+
+
+
+
