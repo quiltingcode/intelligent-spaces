@@ -86,7 +86,7 @@ def clean_expiry_dates(data):
     If no date exists, set expiry as today's date
     """
     if data == "":
-        data = set_date_format
+        data = 'unknown'
         cleaned_expiry_dates.append(data)
     else:
         cleaned_expiry_dates.append(data)
@@ -99,6 +99,7 @@ for plate in plate_expiry_date_col:
 """
 Add a '-' divider symbol between the year and the month
 """
+
 cleaned_expiry_dates = [f"{el[:4]}-{el[4:]}" for el in cleaned_expiry_dates]
 
 
@@ -126,32 +127,53 @@ aug = '-08'
 oct = '-10'
 dec = '-12'
 
+#odd dates
+feb = '-02'
+auto_date = '--'
+
 for plate in cleaned_expiry_dates:
-    if april or june or sept or nov in plate:
+    if april in plate:
         new_30_plate = f"{plate}-30"
         completed_plates.append(new_30_plate)
-    # elif june in plate:
-    #     new_june_plate = f"{plate}-30"
-    #     completed_plates.append(new_june_plate)
-    # elif sept in plate:
-    #     new_sept_plate = f"{plate}-30"
-    #     completed_plates.append(new_sept_plate)
-    # elif nov in plate:
-    #     new_nov_plate = f"{plate}-30"
-    #     completed_plates.append(new_nov_plate)
     elif jan in plate:
-        new_jan_plate = f"{plate}-31"
-        completed_plates.append(new_jan_plate)
+        new_31_plate = f"{plate}-31"
+        completed_plates.append(new_31_plate)
+    elif feb in plate:
+        new_feb_plate = f"{plate}-28"
+        completed_plates.append(new_feb_plate)
     elif mar in plate:
         new_mar_plate = f"{plate}-31"
         completed_plates.append(new_mar_plate)
-    elif may or july in plate:
-        new_31_plate = f"{plate}-31"
-        completed_plates.append(new_31_plate)
+    elif may in plate:
+        new_may_plate = f"{plate}-31"
+        completed_plates.append(new_may_plate)
+    elif june in plate:
+        new_june_plate = f"{plate}-30"
+        completed_plates.append(new_june_plate)
+    elif july in plate:
+        new_july_plate = f"{plate}-31"
+        completed_plates.append(new_july_plate)
+    elif aug in plate:
+        new_aug_plate = f"{plate}-31"
+        completed_plates.append(new_aug_plate)
+    elif sept in plate:
+        new_sept_plate = f"{plate}-30"
+        completed_plates.append(new_sept_plate)
+    elif oct in plate:
+        new_oct_plate = f"{plate}-31"
+        completed_plates.append(new_oct_plate)
+    elif nov in plate:
+        new_nov_plate = f"{plate}-30"
+        completed_plates.append(new_nov_plate)
+    elif dec in plate:
+        new_dec_plate = f"{plate}-31"
+        completed_plates.append(new_dec_plate)
+    else:
+        completed_plates.append(plate)
 
 
 print(completed_plates)
-print(length_plates)
+
 
 
 """ Challenge 3 - Convert invalid latitude and longitude values into none values (rather than the current magic 
