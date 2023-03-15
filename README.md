@@ -9,5 +9,7 @@
 
 * I've imported date from the datatime library to help format the missing date fields in the Plate Expiry Date column
 
+* I have never used the Pandas library before, but when i'm trying to figure out how to sum one column based on a given condition in another, a lot of search results on google keep pointing me towards the Pandas package, so i'm going to give it a go, following the example on the [includehelp.com site](https://www.includehelp.com/python/how-to-sum-values-in-a-column-that-matches-a-given-condition-using-pandas.aspx)
+
 
 

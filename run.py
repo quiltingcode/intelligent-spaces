@@ -1,6 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import date
+import pandas as pd
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -272,26 +274,14 @@ for row in makes_without_header:
 
 make_fines_dict = {cleaned_makes[i]: formatted_nums[i] for i in range(len(cleaned_makes))}
 
-# print(make_fines_dict)
+print(make_fines_dict)
 
+
+
+# Update Google sheet with cleaned data
 
 cleaned_data_ws = SHEET.worksheet('cleaned_data')
 
-
-def update_worksheet(col, data):
-    """
-    Upload the cleaned data back into the citations worksheet
-    """
-    cleaned_data_ws.update(col, [data])
-
-range = 'R1:R200'
-
-# cleaned_data_ws.batch_update([{
-# 'range': range,
-# 'values': [cleaned_latitude],
-# }])
-
-print(cleaned_latitude)
 
 for row in cleaned_latitude:
     cleaned_data_ws.update('R2:R200', [[row]])
