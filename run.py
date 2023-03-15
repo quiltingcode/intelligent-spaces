@@ -19,14 +19,6 @@ sheet = GSPREAD_CLIENT.open('intelligent-spaces-test').sheet1
 citations = sheet.get_all_records()
 
 
-# def update_worksheet(data):
-#     """
-#     Upload the cleaned data back into the citations worksheet
-#     """
-#     cleaned_data_ws = GSPREAD_CLIENT.open('intelligent-spaces-test').sheet1
-#     cleaned_data_ws.append_col(data)
-
-
 """ Challenge 1 - Combine the Issue Date and Issue time into a single Issue Date Time value """
 
 
@@ -86,7 +78,7 @@ def clean_expiry_dates(data):
     If no date exists, set expiry as today's date
     """
     if data == "":
-        data = 'unknown'
+        data = 'none'
         cleaned_expiry_dates.append(data)
     else:
         cleaned_expiry_dates.append(data)
@@ -172,7 +164,7 @@ for plate in cleaned_expiry_dates:
         completed_plates.append(plate)
 
 
-print(completed_plates)
+# print(completed_plates)
 
 
 
@@ -213,8 +205,6 @@ for row in latitude_col:
 for row in longitude_col:
     clean_longitude(row)
 
-
-# update_worksheet(cleaned_latitude)
 
 """
 Challenge 4 - An additional crib sheet provides the agency names that match the Agency ID in 
@@ -285,4 +275,24 @@ make_fines_dict = {cleaned_makes[i]: formatted_nums[i] for i in range(len(cleane
 # print(make_fines_dict)
 
 
+cleaned_data_ws = SHEET.worksheet('cleaned_data')
+
+
+def update_worksheet(col, data):
+    """
+    Upload the cleaned data back into the citations worksheet
+    """
+    cleaned_data_ws.update(col, [data])
+
+range = 'R1:R200'
+
+# cleaned_data_ws.batch_update([{
+# 'range': range,
+# 'values': [cleaned_latitude],
+# }])
+
+print(cleaned_latitude)
+
+for row in cleaned_latitude:
+    cleaned_data_ws.update('R2:R200', [[row]])
 
