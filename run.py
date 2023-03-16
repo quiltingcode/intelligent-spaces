@@ -209,12 +209,8 @@ for row in longitude_col:
     clean_longitude(row)
 
 
-"""
-Challenge 4 - An additional crib sheet provides the agency names that match the Agency ID in 
-the data. Extend the data set to hold both the ID and the name of the agency.
-"""
-
-
+# print(cleaned_latitude)
+# print(cleaned_longitude)
 
 """
 Part 2
@@ -382,6 +378,12 @@ print("Total VOLV fines:", volv_total)
 
 print('_____________________________________________________')
 
+"""
+Part 2
+Challenge 2 - Average and Standard Deviation of the fine amount per year per agency
+"""
+
+
 print('Fine amount per agency')
 print('_____________________________________________________')
 
@@ -427,21 +429,5 @@ print(f'The standard deviation of fine amount per agency is: {standard_deviation
 
 cleaned_data_ws = SHEET.worksheet('cleaned_data')
 
-# for row in cleaned_latitude:
-#     cleaned_data_ws.update('R2:R60', [[row]])
 
 
-# cleaned_data_ws.update_cells(crange='R2',values = cleaned_latitude)
-
-# print(cleaned_latitude)
-
-# s_range = SHEET.worksheet("citations").get("A1:W200")
-# new_worksheet = SHEET.add_worksheet(title="COPY of citations", 
-#     rows=len(s_range), cols=len(s_range[0]))
-
-# cleaned_data_ws.update("A1:A200", [cleaned_latitude])
-
-"""
-Part 2
-Challenge 2 - Average and Standard Deviation of the fine amount per year per agency
-"""
