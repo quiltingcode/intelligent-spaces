@@ -274,6 +274,9 @@ for row in makes_without_header:
 d = sheet.get_all_records()
 df = pd.DataFrame(d)
 
+print('Fine amount per make of vehicle')
+print('_____________________________________________________')
+
 # acur_total = df.loc[df['Make'] == 'ACUR', 'Fine amount'].sum()
 # print("Total ACUR fines:", acur_total)
 
@@ -376,15 +379,54 @@ print("Total VOLK fines:", volk_total)
 volv_total = df.loc[df['Make'] == 'VOLV', 'Fine amount'].sum()
 print("Total VOLV fines:", volv_total)
 
-# Update Google sheet with cleaned data
+print('_____________________________________________________')
+
+print('Fine amount per agency')
+print('_____________________________________________________')
+
+agency_1_total = df.loc[df['Agency'] == 1, 'Fine amount'].sum()
+print("Total Agency 1 fines:", agency_1_total)
+
+# agency_2_total = df.loc[df['Agency'] == 2, 'Fine amount'].sum()
+# print("Total Agency 2 fines:", agency_2_total)
+
+# agency_11_total = df.loc[df['Agency'] == 11, 'Fine amount'].sum()
+# print("Total Agency 11 fines:", agency_11_total)
+
+agency_34_total = df.loc[df['Agency'] == 34, 'Fine amount'].sum()
+print("Total Agency 34 fines:", agency_34_total)
+
+agency_36_total = df.loc[df['Agency'] == 36, 'Fine amount'].sum()
+print("Total Agency 36 fines:", agency_36_total)
+
+agency_54_total = df.loc[df['Agency'] == 54, 'Fine amount'].sum()
+print("Total Agency 54 fines:", agency_54_total)
+
+print('_____________________________________________________')
+
+average_fine_per_agency = (sum_fines // 6)
+print(f"Average fine amount per agency is ${average_fine_per_agency}")
+
+print('_____________________________________________________')
+print('Standard Deviation')
+print('_____________________________________________________')
+
+agency_1_deviation = ((agency_1_total - average_fine_per_agency) ** 2)
+agency_34_deviation = ((agency_34_total - average_fine_per_agency) ** 2)
+agency_36_deviation = ((agency_36_total - average_fine_per_agency) ** 2)
+agency_54_deviation = ((agency_54_total - average_fine_per_agency) ** 2)
+
+# deviations = sum(agency_1_deviation + agency_34_deviation + agency_36_deviation + agency_54_deviation)
+# print(deviations)
+
+
+
 
 cleaned_data_ws = SHEET.worksheet('cleaned_data')
 
-# test_array = []
 # for row in cleaned_latitude:
-#     test_array.append(row)
-#     # cleaned_data_ws.update('R2:R60', [[row]])
-# cleaned_data_ws.update('R', list(test_array))
+#     cleaned_data_ws.update('R2:R60', [[row]])
+
 
 # cleaned_data_ws.update_cells(crange='R2',values = cleaned_latitude)
 
