@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from datetime import date
 import pandas as pd
+import math
 
 
 SCOPE = [
@@ -416,9 +417,11 @@ agency_34_deviation = ((agency_34_total - average_fine_per_agency) ** 2)
 agency_36_deviation = ((agency_36_total - average_fine_per_agency) ** 2)
 agency_54_deviation = ((agency_54_total - average_fine_per_agency) ** 2)
 
-# deviations = sum(agency_1_deviation + agency_34_deviation + agency_36_deviation + agency_54_deviation)
-# print(deviations)
+deviations = agency_1_deviation + agency_34_deviation + agency_36_deviation + agency_54_deviation
+variance = deviations / 6
 
+standard_deviation = math.sqrt(variance)
+print(f'The standard deviation of fine amount per agency is: {standard_deviation}')
 
 
 
