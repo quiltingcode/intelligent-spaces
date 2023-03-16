@@ -38,6 +38,7 @@ for row in cleaned_latitude:
 
 This loops all the data into the worksheet but only through row 1, so it doesn't seem to work it's way down the column. And then eventually, I get an error in the terminal saying that I have reached my daily allowed quota of Google API requests, as i'm only allowed to make 60 udpates per minute, according to Google. I can not overcome this problem with the Google API in the time allotted for this test, so I had to eventually leave the worksheet without it being updated. 
 
+2. As I was unable to update data back to the worksheet, I also didn't manage to append the agency data to the clean data worksheet, which I would have done if I had figured out how to update data back to the worksheet.
 
 ## Credits
 
