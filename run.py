@@ -331,15 +331,60 @@ print("Total LIND fines:", lind_total)
 lrov_total = df.loc[df['Make'] == 'LROV', 'Fine amount'].sum()
 print("Total LROV fines:", lrov_total)
 
+mase_total = df.loc[df['Make'] == 'MASE', 'Fine amount'].sum()
+print("Total MASE fines:", mase_total)
+
+mazd_total = df.loc[df['Make'] == 'MAZD', 'Fine amount'].sum()
+print("Total MAZD fines:", mazd_total)
+
+mbnz_total = df.loc[df['Make'] == 'MBNZ', 'Fine amount'].sum()
+print("Total MBNZ fines:", mbnz_total)
+
+merc_total = df.loc[df['Make'] == 'MERC', 'Fine amount'].sum()
+print("Total MERC fines:", merc_total)
+
+mits_total = df.loc[df['Make'] == 'MITS', 'Fine amount'].sum()
+print("Total MITS fines:", mits_total)
+
+# niss_total = df.loc[df['Make'] == 'NISS', 'Fine amount'].sum()
+# print("Total NISS fines:", niss_total)
+
+olds_total = df.loc[df['Make'] == 'OLDS', 'Fine amount'].sum()
+print("Total OLDS fines:", olds_total)
+
+pont_total = df.loc[df['Make'] == 'PONT', 'Fine amount'].sum()
+print("Total PONT fines:", pont_total)
+
+ptrb_total = df.loc[df['Make'] == 'PTRB', 'Fine amount'].sum()
+print("Total PTRB fines:", ptrb_total)
+
+scio_total = df.loc[df['Make'] == 'SCIO', 'Fine amount'].sum()
+print("Total SCIO fines:", scio_total)
+
+suba_total = df.loc[df['Make'] == 'SUBA', 'Fine amount'].sum()
+print("Total SUBA fines:", suba_total)
+
+tesl_total = df.loc[df['Make'] == 'TESL', 'Fine amount'].sum()
+print("Total TESL fines:", tesl_total)
+
+# toyo_total = df.loc[df['Make'] == 'TOYO', 'Fine amount'].sum()
+# print("Total TOYO fines:", toyo_total)
+
+volk_total = df.loc[df['Make'] == 'VOLK', 'Fine amount'].sum()
+print("Total VOLK fines:", volk_total)
+
+volv_total = df.loc[df['Make'] == 'VOLV', 'Fine amount'].sum()
+print("Total VOLV fines:", volv_total)
+
 # Update Google sheet with cleaned data
 
 cleaned_data_ws = SHEET.worksheet('cleaned_data')
 
-test_array = []
-for row in cleaned_latitude:
-    test_array.append(row)
-    # cleaned_data_ws.update('R2:R60', [[row]])
-cleaned_data_ws.update('R', list(test_array))
+# test_array = []
+# for row in cleaned_latitude:
+#     test_array.append(row)
+#     # cleaned_data_ws.update('R2:R60', [[row]])
+# cleaned_data_ws.update('R', list(test_array))
 
 # cleaned_data_ws.update_cells(crange='R2',values = cleaned_latitude)
 
